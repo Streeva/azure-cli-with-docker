@@ -5,6 +5,12 @@ language: python
 services:
   - docker # required, but travis uses older version of docker :(
 
+install:
+  - echo "install nothing!"
+
+script:
+  - echo "no tests!"
+
 env:
   global:
     - secure: "Xp8H+i8yhkWU2S20smkBkvYXq3pz5tvQPpkzRkaCP3XM0/fB3bvWpcjhJ2KBtZc/GcwBEdbRIMQz2DtJ/E9tkot7oOdApK9fuY5D/n44fNzHb/ufdq6Gsr3rh6QcFM2K9n2KOjA9eRNHkDNhT5w/Pxjzx5T29kds2vUmRbf4cd4IoqDzhcq6+EW8KaQI+e1/ViNpNSmAeNjpfkacEL5Yz0xaDusRCKnhRepgho1ailKQWVMVtYtsKkfvO9+Sx0aqP0lN+DWkCrAWpEBe2OqQsLsRMaar0im9giMC/k7X513e/qVc5LKp3mvm3vI3uCfdy7fb0bmrLgKtzN9d33rInE4csvMszOFyoTxX1NNPmbB8ySVWbDX+Bnu8WXlBwHf2opXatgmoLhxftL7OPW5Rwj/xkk2uAy78EiWuVSaScR9lTX0UPxPbv86EhfNeAOcqEBj3EnLteJ53qu7vJ/apLbnBzvJhMZFo8opf7zl5LQotGcUjt4K/SqkyHtU96lFEp4fIRWn+eEM/3P1FFQRtfl9nMDWFAJX81WdUiLdWB0i3inpaXiajxZ/tjXaf/9cdZ6qS7RiayalvxELSgiA5SgeiYgxK/aDF0GNZfFq20Zl9lXh6FvCATmG7253uDluybnhqvmRkPIueyLFG+/svc4ZE477npkgt8Ee5kwNCVDA=" # DOCKER_EMAIL
