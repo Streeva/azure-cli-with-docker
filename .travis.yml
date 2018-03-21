@@ -13,14 +13,13 @@ script:
 
 env:
   global:
-    - secure: "Xp8H+i8yhkWU2S20smkBkvYXq3pz5tvQPpkzRkaCP3XM0/fB3bvWpcjhJ2KBtZc/GcwBEdbRIMQz2DtJ/E9tkot7oOdApK9fuY5D/n44fNzHb/ufdq6Gsr3rh6QcFM2K9n2KOjA9eRNHkDNhT5w/Pxjzx5T29kds2vUmRbf4cd4IoqDzhcq6+EW8KaQI+e1/ViNpNSmAeNjpfkacEL5Yz0xaDusRCKnhRepgho1ailKQWVMVtYtsKkfvO9+Sx0aqP0lN+DWkCrAWpEBe2OqQsLsRMaar0im9giMC/k7X513e/qVc5LKp3mvm3vI3uCfdy7fb0bmrLgKtzN9d33rInE4csvMszOFyoTxX1NNPmbB8ySVWbDX+Bnu8WXlBwHf2opXatgmoLhxftL7OPW5Rwj/xkk2uAy78EiWuVSaScR9lTX0UPxPbv86EhfNeAOcqEBj3EnLteJ53qu7vJ/apLbnBzvJhMZFo8opf7zl5LQotGcUjt4K/SqkyHtU96lFEp4fIRWn+eEM/3P1FFQRtfl9nMDWFAJX81WdUiLdWB0i3inpaXiajxZ/tjXaf/9cdZ6qS7RiayalvxELSgiA5SgeiYgxK/aDF0GNZfFq20Zl9lXh6FvCATmG7253uDluybnhqvmRkPIueyLFG+/svc4ZE477npkgt8Ee5kwNCVDA=" # DOCKER_EMAIL
     - secure: "HEwDlU8pF31jInP68IFspIIYVqprIAPFNRS6q9hqm6lJT3kE4Ge4n/Qflduja8TMtQnpeq52E/wqi8PRqJGXA6Uh7+5Qa9NsN4ySHzp4nmi+1/j6mZMSz7l/J6GPqTDYkH+9w/4NG7iZzH2nGbT2+AgQWgTrJKK3r7o3L9zDE1TJ+SXMDLiBMHADfJC/S0cypeYZBXCM7kQHtkjzWCGnQ/FOUZ2H5OlY1/bp/x5AaetKOtEKii7S5NNboY345XmrwhM0TMG9du2wvI/OBJc822cH9PgQ6XEh6VM0smsY9cF83LmFJ5/+IgobKNyrzjMscP169xEBCOIh+B2swdwnSV7N2vbThij6RXMDYshEnITjUtnQcFVrzESu08H8ehyaAEnddnBTjkoDPjnWqUje9r7FhSaeNwF9n5bIfdWTlbeQALFLKkV7I3TkOGshKF+OnwHtZyVD0eTGVyGfo4IbjkSGLhz3g+9AxLw+tiRjp7Xc869PuG5FqFKKH2gNKtehvq1l/YO0gvjpaUzBe69qIpqThe8HI3jTGuL8NIgFfIVYAT5VtlJErEvY741YX82G6NVnFwkE1TC78pMEYHBhEFGjN5uFXFJ6OFDkFjz8l50L2Th1UzbGgKMtN16zGXEdU4VBHJLPwZaM0ZHPnehYxtMKPwgM9AENlwJpig2waqE=" # DOCKER_USER
     - secure: "Zc1bMVe6vZFHZDHzsvDKlsyYv8+rem6uGGFvj+LCUzNTFLLcwDvpI/0hpheU54tq+lCFqTNBRCTfZRw7m8b60vpu8COx0s+nqTzP/NgYTb1KUPFnUrO3ZagVcxqOGTJeHEA9FTFiRcrJp9xT0fdwsyBIjF5NK7cbOsg58Mpmo0Sdqm2813Wc0eL6/oxqN113K7Hn5fjyvg9fAFVNof2trl/BQkqYwEEM3kyRNyjqztlGvim3GGTAeaxhzIzhtK6HJw8lumexcfl1kvuIS1ob8ctjtHvIuhaJnW+ln05KKM4zQZFY+uQYdqwk3+fgIb8IoHYfD0iyVWx2PZ7yj+p946D3+2nPuUuqwNvE6MuntsEtefW4V3YwfNaRFaHlDGiIOdxa61PVh5dXACRPsbkBznUgBZ0Px8KOkgTEmTJdhizggkSKgFFFC5aAR9D5ZNaPk9zgiGdbFhuB0D3wRBVvX9H3/wpG005FiP56YSDNCOcH3k5xp/jjwmnuTwNTgDjTkWIwtGzDwUiWRvvDX/dGB1KkHiVAQTfH9id9LAuxbNI1EPyOIQUzKn2PGmAUDaQ415iNH1hja+NOoPP68DPup++c6R03YRHctJJReulEhgTDV8Ykn1ux8wK1S8Z+scfef19V2pPJ+i56XQBvYz4ynDJNlBMBzPJqSjiVt5s5Khc=" # DOCKER_PASS
     - COMMIT=${TRAVIS_COMMIT::8}
 
 after_success:
   - docker --version  # document the version travis is using
-  - docker login -e $DOCKER_EMAIL -u $DOCKER_USER -p $DOCKER_PASS
+  - docker login -u $DOCKER_USER -p $DOCKER_PASS
   - export REPO=streeva/azure-cli-with-docker
   - export TAG=`if [ "$TRAVIS_BRANCH" == "master" ]; then echo "latest"; else echo $TRAVIS_BRANCH ; fi`
   - docker build -f Dockerfile -t $REPO:$COMMIT .
